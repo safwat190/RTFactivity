@@ -5,9 +5,14 @@
 #' @param max_depth Integer. Maximum depth of target levels to propagate scores through. Default is 3.
 #' @param decay_factor Numeric between 0 and 1. Decay factor applied exponentially by depth level to weight downstream TF contributions. Default is 0.5.
 #'
-#' @return Named numeric vector of adjusted TF scores after incorporating multilevel target influences weighted by decay.
+#' @return Data frame with columns:
+#'   - original.score: original TF scores,
+#'   - adjusted.score: TF scores adjusted by incorporating multilevel target influences weighted by decay.
 #'
-#' @export
+#' @examples
+#' gsea_scores <- c(TF1 = 2, TF2 = 1.5, TF3 = 3)
+#' grn <- list(TF1 = c("TF2", "GeneA"), TF2 = c("TF3"), TF3 = c("GeneB"))
+#' adjust_scores_multilevel_decay(gsea_scores, grn, max_depth = 2, decay_factor = 0.6)
 adjust_scores_multilevel_decay <- function(gsea_res, geneset_GRN, max_depth = 3, decay_factor = 0.5) {
 
   # Initialize adjusted scores with the original TF scores
@@ -66,6 +71,16 @@ adjust_scores_multilevel_decay <- function(gsea_res, geneset_GRN, max_depth = 3,
     adjusted_scores[tf] <- adjusted_scores[tf] + additive_score
   }
 
-  # Return the vector of adjusted TF scores
-  return(adjusted_scores)
+  # Combine original and adjusted scores into a data frame
+  df <- data.frame(
+    TF = names(gsea_res),
+    original.score = gsea_res,
+    adjusted.score = adjusted_scores,
+    stringsAsFactors = FALSE
+  )
+
+  # Optionally reset row names to sequential numbers
+  rownames(df) <- seq_len(nrow(df))
+
+  return(df)
 }
