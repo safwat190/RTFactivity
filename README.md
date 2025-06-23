@@ -69,10 +69,17 @@ cell reprogramming, or regeneration.
 
 #### Calculate the relative activity of each TF in fibroblasts between healing and non-healing DFU
 
+    # Check the citation section when using this function from fgsea
     gsea_res_GRN = calculate_relative_score(geneset_GRN = geneset_GRN,
                                             ranked_list = ranked_list,
                                             minSize = 10,
                                             maxSize = 1000)
+    # The above function is a wrapper for fgsea:
+    gsea_res_GRN = fgsea::fgsea(pathways = geneset_GRN,
+                                            stats = ranked_list,
+                                            minSize = 10,
+                                            maxSize = 1000)
+                                            
     View(gsea_res_GRN)
     # Get TFs with adjusted p value < 0.05 
     gsea_res_GRN_sig = subset(gsea_res_GRN, subset = padj < 0.05)
