@@ -107,6 +107,8 @@ cell reprogramming, or regeneration.
              show_rownames = FALSE
     )
 
+![](man/figures/heatmap.png)
+
     # calculate indirect scores based on targets of targets
     adjusted_scores <- adjust_scores_target_average(
       gsea_res = setNames(gsea_res_GRN_sig$NES, gsea_res_GRN_sig$pathway),
@@ -139,7 +141,6 @@ cell reprogramming, or regeneration.
         x = "Direct TF Score (alpha = 1)",
         y = "Indirect TF Score (alpha = 0)",
         color = "Sign Category",
-        caption = "Source: Your adjusted_scores dataframe"
       ) +
       theme_minimal(base_size = 15) +                                
       theme(
@@ -147,6 +148,8 @@ cell reprogramming, or regeneration.
         axis.title = element_text(),
         panel.grid.minor = element_blank()
       )
+
+![](man/figures/direct%20indirect%20scatter.png)
 
     # Show TF names on the plot
     ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = sign_category)) +
@@ -166,7 +169,6 @@ cell reprogramming, or regeneration.
         x = "Direct TF Score (alpha = 1)",
         y = "Indirect TF Score (alpha = 0)",
         color = "Sign Category",
-        caption = "Source: Your adjusted_scores dataframe"
       ) +
       theme_minimal(base_size = 15) +                                
       theme(
@@ -174,6 +176,8 @@ cell reprogramming, or regeneration.
         axis.title = element_text(),
         panel.grid.minor = element_blank()
       )
+
+    ![](man/figures/direct indirect scatter (labeled).png)
 
     # Get direct downstream targets for the TF NR3C1
     res <- get_downstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)

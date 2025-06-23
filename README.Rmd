@@ -101,6 +101,10 @@ pheatmap(targets_df,
          show_rownames = FALSE
 )
 
+```
+![](man/figures/heatmap.png)
+
+```r
 # calculate indirect scores based on targets of targets
 adjusted_scores <- adjust_scores_target_average(
   gsea_res = setNames(gsea_res_GRN_sig$NES, gsea_res_GRN_sig$pathway),
@@ -116,7 +120,9 @@ adjusted_scores$sign_category <- with(adjusted_scores, ifelse(
   direct.alpha.1 > 0 & indirect.alpha.0 > 0, "both_positive",
   ifelse(direct.alpha.1 < 0 & indirect.alpha.0 < 0, "both_negative", "non_consistent")
 ))
+```
 
+```r
 ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = sign_category)) +
   geom_point(size = 3, alpha = 0.8) +          
   geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
@@ -133,7 +139,6 @@ ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = si
     x = "Direct TF Score (alpha = 1)",
     y = "Indirect TF Score (alpha = 0)",
     color = "Sign Category",
-    caption = "Source: Your adjusted_scores dataframe"
   ) +
   theme_minimal(base_size = 15) +                                
   theme(
@@ -141,7 +146,9 @@ ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = si
     axis.title = element_text(),
     panel.grid.minor = element_blank()
   )
-
+```
+![](man/figures/direct indirect scatter.png)
+```r
 # Show TF names on the plot
 ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = sign_category)) +
   geom_point(size = 3, alpha = 0.8) +
@@ -160,7 +167,6 @@ ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = si
     x = "Direct TF Score (alpha = 1)",
     y = "Indirect TF Score (alpha = 0)",
     color = "Sign Category",
-    caption = "Source: Your adjusted_scores dataframe"
   ) +
   theme_minimal(base_size = 15) +                                
   theme(
@@ -168,6 +174,8 @@ ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = si
     axis.title = element_text(),
     panel.grid.minor = element_blank()
   )
+
+![](man/figures/direct indirect scatter (labeled).png)
 
 # Get direct downstream targets for the TF NR3C1
 res <- get_downstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
