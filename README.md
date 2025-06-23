@@ -144,6 +144,26 @@ cell reprogramming, or regeneration.
     # View results
     head(adjusted_scores)
 
+    # Get direct downstream targets for the TF NR3C1
+    res <- get_downstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
+    res$edges
+    res$downstream_targets
+
+    # Get indirect downstream targets for the TF NR3C1 at 2 levels
+    res <- get_downstream("NR3C1", geneset_GRN, max_depth = 2, exclude_self = T)
+    res$edges
+    res$downstream_targets
+
+    # Get direct upstream targets for the TF NR3C1
+    res <- get_upstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
+    res$edges
+    res$upstream_TFs
+
+    # Get indirect upstream targets for the TF NR3C1 at 2 levels
+    res <- get_upstream("NR3C1", geneset_GRN, max_depth = 2, exclude_self = T)
+    res$edges
+    res$upstream_TFs
+
 ## 📂 Input Format
 
 Your input should include:
