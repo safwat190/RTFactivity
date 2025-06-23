@@ -215,7 +215,7 @@ res <- get_upstream("NR3C1", geneset_GRN, max_depth = 2, exclude_self = T)
 res$edges
 res$upstream_TFs
 ```
-## 📂 Input Format
+##  Input Format
 Your input should include:
 
     DEGs table (data frame):
@@ -227,14 +227,14 @@ Your input should include:
         - TF: transcription factor name
         - Target: gene regulated by TF
 
-## 📈 Output
+##  Output
 
 - **TF**: transcription factor name  
 - **direct.alpha.1**: TF score based on direct targets only  
 - **indirect.alpha.0**: TF score based on indirect targets only  
 - **combined.alpha.of.interest**: weighted average TF score based on alpha (between 0 and 1)  
 
-## 🌍 Applications
+##  Applications
 RTFactivity was developed to identify TFs driving beneficial cell state transitions such as in:
 
     ✅ Wound healing (e.g., reprogramming fibroblasts to promote angiogenesis)
@@ -243,7 +243,7 @@ RTFactivity was developed to identify TFs driving beneficial cell state transiti
 
     ✅ Spinal cord regeneration
     
-## 📚 Citation
+##  Citation
 Ahmed S. Abouhashem, et al. (2025). Identification of Skin Multicellular Reprogramming Factors as Potential Treatment for Non-Healing Diabetic Foot Ulcers. [Under Revision]
 RTFactivity GitHub: https://github.com/safwat190/RTFactivity  
 
@@ -253,10 +253,10 @@ RTFactivity GitHub: https://github.com/safwat190/RTFactivity
 
 - Subramanian, A., Tamayo, P., Mootha, V. K., Mukherjee, S., Ebert, B. L., Gillette, M. A., Paulovich, A., Pomeroy, S. L., Golub, T. R., Lander, E. S., & Mesirov, J. P. (2005). Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proceedings of the National Academy of Sciences of the United States of America, 102(43), 15545–15550. https://doi.org/10.1073/pnas.0506580102
 
-## 🤝 Contributing
+##  Contributing
 Pull requests and feedback are welcome. Please open an issue or submit changes via PR.
 
-## 🧠 Maintainer
+##  Maintainer
 Dr. Ahmed S. Abouhashem  
 Research Assistant Professor  
 University of Pittsburgh  

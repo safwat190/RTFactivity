@@ -218,7 +218,7 @@ cell reprogramming, or regeneration.
     res$edges
     res$upstream_TFs
 
-## 📂 Input Format
+## Input Format
 
 Your input should include:
 
@@ -231,7 +231,7 @@ Your input should include:
         - TF: transcription factor name
         - Target: gene regulated by TF
 
-## 📈 Output
+## Output
 
 -   **TF**: transcription factor name  
 -   **direct.alpha.1**: TF score based on direct targets only  
@@ -239,7 +239,7 @@ Your input should include:
 -   **combined.alpha.of.interest**: weighted average TF score based on
     alpha (between 0 and 1)
 
-## 🌍 Applications
+## Applications
 
 RTFactivity was developed to identify TFs driving beneficial cell state
 transitions such as in:
@@ -250,7 +250,7 @@ transitions such as in:
 
     ✅ Spinal cord regeneration
 
-## 📚 Citation
+## Citation
 
 Ahmed S. Abouhashem, et al. (2025). Identification of Skin Multicellular
 Reprogramming Factors as Potential Treatment for Non-Healing Diabetic
@@ -272,12 +272,12 @@ papers: **
     of the United States of America, 102(43), 15545–15550.
     <https://doi.org/10.1073/pnas.0506580102>
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests and feedback are welcome. Please open an issue or submit
 changes via PR.
 
-## 🧠 Maintainer
+## Maintainer
 
 Dr. Ahmed S. Abouhashem  
 Research Assistant Professor  
