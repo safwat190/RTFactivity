@@ -113,7 +113,7 @@ pheatmap(targets_df,
 )
 
 ```
-![](man/figures/heatmap.png)
+
 
 
 #### Calculate indirect scores based on targets of targets

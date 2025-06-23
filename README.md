@@ -121,8 +121,6 @@ cell reprogramming, or regeneration.
              show_rownames = FALSE
     )
 
-![](man/figures/heatmap.png)
-
 #### Calculate indirect scores based on targets of targets
 
     adjusted_scores <- adjust_scores_target_average(
