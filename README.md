@@ -36,9 +36,14 @@ cell reprogramming, or regeneration.
     library(ggplot2)
     library(ggrepel)
 
-    # Load example data:
-    # example_DEGs: differentially expressed genes in fibroblasts between healing and nonhealing ulcer)
-    # example_GRN: fibroblast gene regulatory network (GRN)
+#### Load example data:
+
+-   **example\_DEGs**: differentially expressed genes in fibroblasts
+    between healing and nonhealing ulcer)
+-   **example\_GRN**: fibroblast gene regulatory network (GRN)
+
+<!-- -->
+
     data("example_DEGs")
     data("example_GRN")
 
@@ -53,7 +58,8 @@ cell reprogramming, or regeneration.
     names(ranked_list) = example_DEGs$gene
     ranked_list <- sort(ranked_list, decreasing = TRUE)
 
-    # check number of targets for each TF which are among DEGs or not
+#### Check the number of target genes regulated by each transcription factor that are differentially expressed
+
     tf_summary <- count_targets(geneset_GRN, deg_genes = example_DEGs$gene)
     head(tf_summary)
     hist(tf_summary$n_targets, breaks = 30)
@@ -61,13 +67,13 @@ cell reprogramming, or regeneration.
     plot(tf_summary$n_targets, tf_summary$n_targets_in_DEGs)
     summary(tf_summary$n_targets_in_DEGs)
 
-    # calculate the relative activity of each TF in fibroblasts between healing and non-healing DFU 
+#### Calculate the relative activity of each TF in fibroblasts between healing and non-healing DFU
+
     gsea_res_GRN = calculate_relative_score(geneset_GRN = geneset_GRN,
                                             ranked_list = ranked_list,
                                             minSize = 10,
                                             maxSize = 1000)
     View(gsea_res_GRN)
-
     # Get TFs with adjusted p value < 0.05 
     gsea_res_GRN_sig = subset(gsea_res_GRN, subset = padj < 0.05)
 
@@ -76,7 +82,8 @@ cell reprogramming, or regeneration.
       arrange(desc(NES)) %>%
       pull(pathway)
 
-    # Plot heatmap for top 5 with positive and negative scores
+#### Plot heatmap for top 5 with positive and negative scores
+
     # get TF names
     top_TF = 5
     sig_TFs = c(head(sig_TFs,top_TF),tail(sig_TFs,top_TF))
@@ -109,7 +116,8 @@ cell reprogramming, or regeneration.
 
 ![](man/figures/heatmap.png)
 
-    # calculate indirect scores based on targets of targets
+#### Calculate indirect scores based on targets of targets
+
     adjusted_scores <- adjust_scores_target_average(
       gsea_res = setNames(gsea_res_GRN_sig$NES, gsea_res_GRN_sig$pathway),
       geneset_GRN = geneset_GRN,
@@ -119,7 +127,8 @@ cell reprogramming, or regeneration.
     # View results
     head(adjusted_scores)
 
-    # plot direct against indirect scores
+#### Plot direct against indirect scores
+
     adjusted_scores$sign_category <- with(adjusted_scores, ifelse(
       direct.alpha.1 > 0 & indirect.alpha.0 > 0, "both_positive",
       ifelse(direct.alpha.1 < 0 & indirect.alpha.0 < 0, "both_negative", "non_consistent")
@@ -151,7 +160,8 @@ cell reprogramming, or regeneration.
 
 ![](man/figures/direct%20indirect%20scatter.png)
 
-    # Show TF names on the plot
+#### Show TF names on the plot
+
     ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = sign_category)) +
       geom_point(size = 3, alpha = 0.8) +
       geom_text_repel(aes(label = TF), size = 4, max.overlaps = Inf) +
@@ -177,24 +187,28 @@ cell reprogramming, or regeneration.
         panel.grid.minor = element_blank()
       )
 
-    ![](man/figures/direct indirect scatter (labeled).png)
+![](man/figures/direct%20indirect%20scatter%20(labeled).png)
 
-    # Get direct downstream targets for the TF NR3C1
+#### Get direct downstream targets for the TF NR3C1
+
     res <- get_downstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
     res$edges
     res$downstream_targets
 
-    # Get indirect downstream targets for the TF NR3C1 at 2 levels
+#### Get indirect downstream targets for the TF NR3C1 at 2 levels
+
     res <- get_downstream("NR3C1", geneset_GRN, max_depth = 2, exclude_self = T)
     res$edges
     res$downstream_targets
 
-    # Get direct upstream targets for the TF NR3C1
+#### Get direct upstream targets for the TF NR3C1
+
     res <- get_upstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
     res$edges
     res$upstream_TFs
 
-    # Get indirect upstream targets for the TF NR3C1 at 2 levels
+#### Get indirect upstream targets for the TF NR3C1 at 2 levels
+
     res <- get_upstream("NR3C1", geneset_GRN, max_depth = 2, exclude_self = T)
     res$edges
     res$upstream_TFs
@@ -204,32 +218,21 @@ cell reprogramming, or regeneration.
 Your input should include:
 
     DEGs table (data frame):
-
-        gene: gene symbol
-
-        logFC: log fold-change between condition A vs B
-
-        adj.pval: adjusted p-value
-
-    Gene Regulatory Network (GRN) (data frame):
-
-        TF: transcription factor name
-
-        Target: gene regulated by TF
+        - gene: gene symbol
+        - logFC: log fold-change between condition A vs B
+        - adj.pval: adjusted p-value
         
+    Gene Regulatory Network (GRN) (data frame):
+        - TF: transcription factor name
+        - Target: gene regulated by TF
 
 ## 📈 Output
 
-The function calculate\_relative\_score() returns a data frame with the
-following columns:
-
-    TF: transcription factor name
-
-    direct.alpha.1: TF score based on direct targets only
-
-    indirect.alpha.0: TF score based on indirect targets only
-
-    combined.alpha.of.interest: weighted average TF score based on alpha (between 0 and 1)
+-   **TF**: transcription factor name  
+-   **direct.alpha.1**: TF score based on direct targets only  
+-   **indirect.alpha.0**: TF score based on indirect targets only  
+-   **combined.alpha.of.interest**: weighted average TF score based on
+    alpha (between 0 and 1)
 
 ## 🌍 Applications
 
