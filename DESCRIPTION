@@ -13,6 +13,8 @@ Depends:
     R (>= 3.5)
 Imports:
     fgsea
+    ggplot2
+    dplyr
 LazyData: true
 URL: https://github.com/asa-bioinformatics/RTFactivity
-BugReports: https://github.com/asa-bioinformatics/RTFactivity/issues
+BugReports: https://github.com/safwat190/RTFactivity/issues
