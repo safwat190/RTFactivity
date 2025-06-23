@@ -111,5 +111,6 @@ changes via PR.
 
 ## 🧠 Maintainer
 
-Dr. Ahmed S. Abouhashem, Assistant Professor, University of Pittsburgh
+Dr. Ahmed S. Abouhashem, Research Assistant Professor, University of
+Pittsburgh  
 📧 <A.S.A@pitt.edu>
