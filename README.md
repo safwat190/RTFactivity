@@ -252,16 +252,20 @@ Reprogramming Factors as Potential Treatment for Non-Healing Diabetic
 Foot Ulcers. \[Under Revision\] RTFactivity GitHub:
 <https://github.com/safwat190/RTFactivity>
 
-Korotkevich G, Sukhov V, Sergushichev A (2019). “Fast gene set
-enrichment analysis.” bioRxiv. <doi:10.1101/060012>
+**If you use scoring function “calculate\_relative\_score” which is the
+same as “fgsea” from the package fgsea, please cite the package original
+papers: **
 
-Subramanian, A., Tamayo, P., Mootha, V. K., Mukherjee, S., Ebert, B. L.,
-Gillette, M. A., Paulovich, A., Pomeroy, S. L., Golub, T. R., Lander, E.
-S., & Mesirov, J. P. (2005). Gene set enrichment analysis: a
-knowledge-based approach for interpreting genome-wide expression
-profiles. Proceedings of the National Academy of Sciences of the United
-States of America, 102(43), 15545–15550.
-<https://doi.org/10.1073/pnas.0506580102>
+-   Korotkevich G, Sukhov V, Sergushichev A (2019). “Fast gene set
+    enrichment analysis.” bioRxiv. <doi:10.1101/060012>
+
+-   Subramanian, A., Tamayo, P., Mootha, V. K., Mukherjee, S., Ebert, B.
+    L., Gillette, M. A., Paulovich, A., Pomeroy, S. L., Golub, T. R.,
+    Lander, E. S., & Mesirov, J. P. (2005). Gene set enrichment
+    analysis: a knowledge-based approach for interpreting genome-wide
+    expression profiles. Proceedings of the National Academy of Sciences
+    of the United States of America, 102(43), 15545–15550.
+    <https://doi.org/10.1073/pnas.0506580102>
 
 ## 🤝 Contributing
 
