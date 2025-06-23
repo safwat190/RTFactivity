@@ -25,6 +25,10 @@ devtools::install_github("safwat190/RTFactivity")
 
 ```r
 library(RTFactivity)
+library(dplyr)
+library(pheatmap)
+library(ggplot2)
+library(ggrepel)
 
 # Load example data:
 # example_DEGs: differentially expressed genes in fibroblasts between healing and nonhealing ulcer)
@@ -104,6 +108,9 @@ adjusted_scores <- adjust_scores_target_average(
   alpha = 0.5
 )
 
+# View results
+head(adjusted_scores)
+
 # plot direct against indirect scores
 adjusted_scores$sign_category <- with(adjusted_scores, ifelse(
   direct.alpha.1 > 0 & indirect.alpha.0 > 0, "both_positive",
@@ -135,8 +142,32 @@ ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = si
     panel.grid.minor = element_blank()
   )
 
-# View results
-head(adjusted_scores)
+# Show TF names on the plot
+ggplot(adjusted_scores, aes(x = direct.alpha.1, y = indirect.alpha.0, color = sign_category)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_text_repel(aes(label = TF), size = 4, max.overlaps = Inf) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  scale_color_manual(
+    values = c(
+      both_positive = "red",
+      both_negative = "darkgreen",
+      mixed = "grey"
+    )
+  ) +
+  labs(
+    title = "Scatter plot of Direct vs Indirect TF Scores",
+    x = "Direct TF Score (alpha = 1)",
+    y = "Indirect TF Score (alpha = 0)",
+    color = "Sign Category",
+    caption = "Source: Your adjusted_scores dataframe"
+  ) +
+  theme_minimal(base_size = 15) +                                
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    axis.title = element_text(),
+    panel.grid.minor = element_blank()
+  )
 
 # Get direct downstream targets for the TF NR3C1
 res <- get_downstream("NR3C1", geneset_GRN, max_depth = 1, exclude_self = T)
