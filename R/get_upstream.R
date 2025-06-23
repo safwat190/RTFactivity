@@ -11,7 +11,7 @@
 #' @return A list with:
 #'   - upstream_TFs: Character vector of TFs that regulate the target gene directly or indirectly (up to max_depth).
 #'   - edges: Data frame with two columns `TF` and `Target` representing the regulatory edges leading to the target gene.
-#'
+#' @export
 get_upstream <- function(target_gene, geneset_GRN, max_depth = 2, visited = character(), exclude_self = FALSE, deg_genes = NULL) {
   # Stop if max depth reached or gene visited (to avoid cycles)
   if (max_depth == 0 || target_gene %in% visited) {

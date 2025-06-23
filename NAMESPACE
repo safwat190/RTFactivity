@@ -2,7 +2,7 @@
 
 export(adjust_scores_multilevel_decay)
 export(adjust_scores_target_average)
+export(calculate_relative_score)
 export(count_targets)
 export(get_downstream)
 export(get_upstream)
-

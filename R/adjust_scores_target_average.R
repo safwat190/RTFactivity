@@ -13,7 +13,7 @@
 #' @param alpha Numeric value between 0 and 1 specifying the weight of the original TF score in the combined score.
 #'              - alpha = 1 means no adjustment (original scores only),
 #'              - alpha = 0 means score is fully replaced by mean target score.
-#'
+#' @export
 #' @return Data frame with columns:
 #'   - TF: transcription factor names,
 #'   - direct.alpha.1: original TF scores,

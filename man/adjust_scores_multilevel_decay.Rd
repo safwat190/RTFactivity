@@ -21,7 +21,11 @@ adjust_scores_multilevel_decay(
 \item{decay_factor}{Numeric between 0 and 1. Decay factor applied exponentially by depth level to weight downstream TF contributions. Default is 0.5.}
 }
 \value{
-Named numeric vector of adjusted TF scores after incorporating multilevel target influences weighted by decay.
+Data frame with columns:
+\itemize{
+\item original.score: original TF scores,
+\item adjusted.score: TF scores adjusted by incorporating multilevel target influences weighted by decay.
+}
 }
 \description{
 Adjust transcription factor scores by propagating influence through multilevel targets with exponential decay

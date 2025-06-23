@@ -11,6 +11,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5)
+Imports:
+    fgsea
 LazyData: true
 URL: https://github.com/asa-bioinformatics/RTFactivity
 BugReports: https://github.com/asa-bioinformatics/RTFactivity/issues

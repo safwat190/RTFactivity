@@ -3,7 +3,7 @@
 #'
 #' @param targets_list A named list where each element is a character vector of gene targets for a transcription factor (TF). The names of the list should be TF names.
 #' @param deg_genes Optional character vector of differentially expressed genes (DEGs). If provided, the function will count how many targets of each TF are in this DEG list.
-#'
+#' @export
 #' @return A data frame with:
 #'   - TF: the name of the transcription factor
 #'   - n_targets: total number of targets for that TF

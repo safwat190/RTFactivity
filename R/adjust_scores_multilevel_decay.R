@@ -9,10 +9,7 @@
 #'   - original.score: original TF scores,
 #'   - adjusted.score: TF scores adjusted by incorporating multilevel target influences weighted by decay.
 #'
-#' @examples
-#' gsea_scores <- c(TF1 = 2, TF2 = 1.5, TF3 = 3)
-#' grn <- list(TF1 = c("TF2", "GeneA"), TF2 = c("TF3"), TF3 = c("GeneB"))
-#' adjust_scores_multilevel_decay(gsea_scores, grn, max_depth = 2, decay_factor = 0.6)
+#' @export
 adjust_scores_multilevel_decay <- function(gsea_res, geneset_GRN, max_depth = 3, decay_factor = 0.5) {
 
   # Initialize adjusted scores with the original TF scores

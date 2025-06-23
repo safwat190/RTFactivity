@@ -11,7 +11,7 @@
 #' @return A list with:
 #'   - downstream_targets: Character vector of target genes regulated directly or indirectly by the TF (up to max_depth).
 #'   - edges: Data frame with two columns `TF` and `Target` representing regulatory edges downstream from the TF.
-#'
+#' @export
 get_downstream <- function(tf_gene, geneset_GRN, max_depth = 2, visited = character(), exclude_self = FALSE, deg_genes = NULL) {
   # Stop recursion if max depth reached, gene already visited, or no targets for this gene
   if (max_depth == 0 || tf_gene %in% visited || is.null(geneset_GRN[[tf_gene]])) {
